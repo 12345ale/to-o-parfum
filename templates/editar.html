@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Editar fragancia | antony Parfum{% endblock %}
+{% block content %}
+<section class="edit-page">
+  <a class="back-link" href="{{ url_for('inicio') }}#coleccion">← Volver a la colección</a>
+  <div class="edit-layout"><div class="edit-copy"><div class="eyebrow"><span></span> ACTUALIZAR CATÁLOGO</div><h1>Perfecciona<br>los <em>detalles.</em></h1><p>Actualiza la información de esta fragancia. Los cambios aparecerán en tu colección.</p><div class="edit-monogram">{{ alumno.nombre[:1]|upper }}</div></div>
+  <div class="form-card edit-card"><div class="form-card-top"><span>EDITAR REGISTRO</span><span>✦</span></div><h3>{{ alumno.nombre }}</h3><p class="form-subtitle">Modifica los campos que necesites.</p>
+  <form method="post" action="{{ url_for('editar', id=alumno._id) }}" class="product-form">
+    <div class="field"><label for="nombre">Nombre de la fragancia</label><input id="nombre" name="nombre" value="{{ alumno.nombre }}" required maxlength="80"></div>
+    <div class="field"><label for="categoria">Categoría</label><input id="categoria" name="categoria" value="{{ alumno.categoria }}" required maxlength="20"></div>
+    <div class="field"><label for="estado">Estado del producto</label><select id="estado" name="estado" required><option value="">Selecciona un estado</option>{% for opcion in ['Disponible', 'Agotado'] %}<option value="{{ opcion }}" {% if alumno.get('estado') == opcion %}selected{% endif %}>{{ opcion }}</option>{% endfor %}</select></div>
+    <button class="button button-gold form-submit" type="submit">Guardar cambios <span>↗</span></button>
+  </form></div></div>
+</section>
+{% endblock %}

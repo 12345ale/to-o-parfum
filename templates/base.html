@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}antony Parfum | Perfumería{% endblock %}</title>
+  <meta name="description" content="antony Parfum, catálogo de fragancias.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="{{ url_for('static', filename='estilos.css') }}" rel="stylesheet">
+</head>
+<body>
+  <div class="topline">antony PARFUM <span>·</span> ESENCIAS QUE DEJAN HUELLA</div>
+  <header class="site-header">
+    <a class="brand" href="{{ url_for('inicio') }}"><span class="brand-mark">M</span><span>antony <b>PARFUM</b><small>FRAGRANCE HOUSE</small></span></a>
+    <nav>
+      <a href="{{ url_for('inicio') }}">Inicio</a>
+      <a href="{{ url_for('inicio') }}#registro">Agregar fragancia</a>
+      <a href="{{ url_for('inicio') }}#coleccion">Colección</a>
+      <a href="{{ url_for('ayuda') }}">Ayuda</a>
+    </nav>
+    <a class="header-cta" href="{{ url_for('inicio') }}#registro">＋ Nueva fragancia</a>
+  </header>
+  <main>
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+      {% if mensajes %}
+        <div class="flash-wrap">
+          {% for categoria, mensaje in mensajes %}<div class="flash {{ categoria }}">{{ mensaje }}</div>{% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer">
+    <a class="brand footer-brand" href="{{ url_for('inicio') }}"><span class="brand-mark">M</span><span>antony <b>PARFUM</b><small>FRAGRANCE HOUSE</small></span></a>
+    <p>El arte de encontrar tu esencia.</p>
+    <span>© 2026 antony Parfum · Proyecto académico</span>
+  </footer>
+</body>
+</html>

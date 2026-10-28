@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Ayuda | antony Parfum{% endblock %}
+{% block content %}
+<section class="help-page"><div class="eyebrow"><span></span> CENTRO DE AYUDA</div><h1>Tu colección,<br><em>bajo control.</em></h1><p class="help-lead">Guía rápida para administrar el catálogo antony Parfum.</p>
+<div class="help-grid"><article><span>01</span><h3>Agregar fragancia</h3><p>En Inicio, completa el nombre, categoría y estado del producto. Presiona “Guardar fragancia”.</p></article><article><span>02</span><h3>Consultar colección</h3><p>En la sección Colección puedes revisar los productos registrados y su disponibilidad.</p></article><article><span>03</span><h3>Editar información</h3><p>Presiona “Editar” en la fila del producto, modifica los datos y guarda los cambios.</p></article><article><span>04</span><h3>Eliminar una prueba</h3><p>Usa “Eliminar” únicamente con productos ficticios. El sistema pedirá confirmación.</p></article><article><span>05</span><h3>Consultar la API</h3><p>Abre <code>/api/productos</code> para ver el catálogo en JSON. La API permite GET, POST, PUT y DELETE.</p></article><article><span>06</span><h3>Fecha de consulta</h3><p>Esta página se revisó el {{ fecha }}.</p></article></div>
+<a class="button button-gold" href="{{ url_for('inicio') }}">Volver al catálogo <span>↗</span></a></section>
+{% endblock %}
